@@ -1,0 +1,30 @@
+{
+  "name": "modulo-05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "NODE_ENV=test npx sequelize db:migrate",
+    "test": "NODE_ENV=test jest",
+    "posttest": "NODE_ENV=test npx sequelize db:migrate:undo:all",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js --ignore __tests__"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "pg": "^7.9.0",
+    "sequelize": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0",
+    "nodemon": "^1.18.10",
+    "sequelize-cli": "^5.4.0",
+    "sqlite3": "^4.0.6",
+    "supertest": "^4.0.2"
+  }
+}

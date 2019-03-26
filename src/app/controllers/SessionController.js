@@ -1,5 +1,7 @@
 const { User } = require("../models");
 
+const Mail = require("../services/MailService");
+
 class SessionController {
   async store(req, res) {
     const { email, password } = req.body;
@@ -13,7 +15,16 @@ class SessionController {
       return res.status(401).json({ message: "E-mail/password incorrect" });
     }
 
-    return res.status(200).send();
+    await Mail.send({
+      from: "Felipe Chierice <fschierice@gmail.com>",
+      to: `${user.name} <${user.email}>`,
+      subject: "Novo acesso em sua conta",
+      text: "Just a test"
+    });
+
+    return res.json({
+      token: await user.generateToken()
+    });
   }
 }
 
